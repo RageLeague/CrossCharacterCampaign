@@ -29,7 +29,7 @@ local MUTATORS =
     },
 }
 
---local OVERRIDE_CHARACTER = false--"SMITH"
+
 
 local function OnLoad()
 
@@ -63,6 +63,20 @@ local function OnLoad()
     
         self:ApplyNewPlayerConfig( game_state, config_options )
     end
+    GraftCollection.Rewardable = function(owner, fn)
+        local function Filter( graft_def )
+            return graft_def.type == GRAFT_TYPE.COMBAT or graft_def.type == GRAFT_TYPE.NEGOTIATION or graft_def.type == GRAFT_TYPE.COIN
+        end
+    
+        local collection = GraftCollection(fn):NotUnique():NotLocked():NotBoss():NotUpgraded():Filter( Filter )
+        if owner then
+            collection:NotInstalled(owner)
+            collection:NotRestricted(owner)
+        end
+        return collection
+    end
+    
+    require "CrossCharacterCampaign:add_coin_graft_to_reward"
 end
 
 return {
