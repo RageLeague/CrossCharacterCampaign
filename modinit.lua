@@ -27,6 +27,11 @@ local MUTATORS =
         override_character = "SMITH",
         exclusion_ids = { "play_as_sal", "play_as_rook" },
     },
+    rook_coin_reward =
+    {
+        name = "Rewardable Coins",
+        desc = "Coins will show up as graft rewards(when applied)",
+    },
 }
 
 
@@ -65,9 +70,13 @@ local function OnLoad()
     end
     GraftCollection.Rewardable = function(owner, fn)
         local function Filter( graft_def )
-            return graft_def.type == GRAFT_TYPE.COMBAT or graft_def.type == GRAFT_TYPE.NEGOTIATION or graft_def.type == GRAFT_TYPE.COIN
+            if TheGame:GetGameState() and TheGame:GetGameState():GetPlayerAgent() and TheGame:GetGameState():GetPlayerAgent().graft_owner:GetGraft( "rook_coin_reward" ) then
+                return graft_def.type == GRAFT_TYPE.COMBAT or graft_def.type == GRAFT_TYPE.NEGOTIATION or graft_def.type == GRAFT_TYPE.COIN
+            else
+                return graft_def.type == GRAFT_TYPE.COMBAT or graft_def.type == GRAFT_TYPE.NEGOTIATION
+            end
         end
-    
+        
         local collection = GraftCollection(fn):NotUnique():NotLocked():NotBoss():NotUpgraded():Filter( Filter )
         if owner then
             collection:NotInstalled(owner)
