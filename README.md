@@ -10,6 +10,8 @@ You can also set the outfit of each character and apply the mutator. Then you ca
 
 This simply allows you to play a character(with their unique deck, grafts, and mechanics) in other character's story. It doesn't change any quests to reflect on the changes. Sometimes picking an option that doesn't make sense will cause the game to crash, so don't trade your non-existing lucky coin with Krog's weighted coin.
 
+This mod also adds another mutator that allows coin grafts to show up as a generic graft reward. Only useful when playing as Rook, obviously.
+
 ## How to install?
 
 With the official mod update, you can read about how to set up mods [here](https://forums.kleientertainment.com/forums/topic/116914-early-mod-support/).
