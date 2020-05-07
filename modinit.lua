@@ -30,7 +30,7 @@ local MUTATORS =
     rook_coin_reward =
     {
         name = "Rewardable Coins",
-        desc = "Coins will show up as graft rewards(when applied)",
+        desc = "Coins will show up as graft rewards(when applicable, which basically means playing as Rook)",
     },
 }
 
