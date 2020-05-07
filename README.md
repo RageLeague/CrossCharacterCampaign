@@ -19,3 +19,10 @@ With the official mod update, you can read about how to set up mods [here](https
 3. Clone this repository into that folder.
 4. The `modinit.lua` file should be under `.../mods/[insert_repo_name_here]`.
 5. Volia! Now the mod should work.
+
+## CHANGELOG
+
+### Update 1
+
+* A new mutator called "Rewardable Coins". Enable this mutator to allow Rook to acquire non-default coin outside of his campaign! Coins will show up as a generic graft reward sometimes.
+* Update the UI of pick graft screen so that coin grafts will show up as correct color and correct description.(Still incorrect icon right now, but there's little I can do about it.)
