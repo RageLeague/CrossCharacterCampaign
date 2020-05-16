@@ -24,6 +24,10 @@ With the official mod update, you can read about how to set up mods [here](https
 
 ## CHANGELOG
 
+### Update 2
+
+* Changed all Sal's brawl grafts to the general series, so other characters can use them.
+
 ### Update 1
 
 * A new mutator called "Rewardable Coins". Enable this mutator to allow Rook to acquire non-default coin outside of his campaign! Coins will show up as a generic graft reward sometimes.

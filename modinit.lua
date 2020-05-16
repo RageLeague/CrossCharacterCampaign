@@ -84,8 +84,12 @@ local function OnLoad()
         end
         return collection
     end
-    
     require "CrossCharacterCampaign:add_coin_graft_to_reward"
+
+    local collection = GraftCollection(function(graft_def) return graft_def.brawl == true end)
+    for _, graft in ipairs(collection.items) do
+        graft.series = "GENERAL"
+    end
 end
 
 return {
