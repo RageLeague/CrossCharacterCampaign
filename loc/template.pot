@@ -1,0 +1,39 @@
+#: GRAFT.PLAY_AS_ROOK.DESC
+msgctxt "GRAFT.PLAY_AS_ROOK.DESC"
+msgid "Play through this campaign as Rook"
+msgstr ""
+
+#: GRAFT.PLAY_AS_ROOK.NAME
+msgctxt "GRAFT.PLAY_AS_ROOK.NAME"
+msgid "Play As Rook"
+msgstr ""
+
+#: GRAFT.PLAY_AS_SAL.DESC
+msgctxt "GRAFT.PLAY_AS_SAL.DESC"
+msgid "Play through this campaign as Sal"
+msgstr ""
+
+#: GRAFT.PLAY_AS_SAL.NAME
+msgctxt "GRAFT.PLAY_AS_SAL.NAME"
+msgid "Play As Sal"
+msgstr ""
+
+#: GRAFT.PLAY_AS_SMITH.DESC
+msgctxt "GRAFT.PLAY_AS_SMITH.DESC"
+msgid "Play through this campaign as Smith"
+msgstr ""
+
+#: GRAFT.PLAY_AS_SMITH.NAME
+msgctxt "GRAFT.PLAY_AS_SMITH.NAME"
+msgid "Play As Smith"
+msgstr ""
+
+#: GRAFT.ROOK_COIN_REWARD.DESC
+msgctxt "GRAFT.ROOK_COIN_REWARD.DESC"
+msgid "Coins will show up as graft rewards(when applicable, which basically means playing as Rook)"
+msgstr ""
+
+#: GRAFT.ROOK_COIN_REWARD.NAME
+msgctxt "GRAFT.ROOK_COIN_REWARD.NAME"
+msgid "Rewardable Coins"
+msgstr ""

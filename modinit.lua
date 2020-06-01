@@ -2,6 +2,8 @@ MountModData( "CrossCharacterCampaign" )
 
 local player_starts = require "content/player_starts"
 
+local filepath = require "util/filepath"
+
 local MUTATORS = 
 {
     play_as_sal =
@@ -34,16 +36,14 @@ local MUTATORS =
     },
 }
 
-
-
 local function OnLoad()
 
-    
+    -- Add the above grafts as mutators
     for id, graft in pairs( MUTATORS ) do
         Content.AddMutatorGraft( id, graft )
     end    
 
-
+    -- Modify the PlayerAct.InitializeAct function to consider any mutators applied
     PlayerAct.InitializeAct = function( self, game_state, config_options)
     
         local player = game_state:GetPlayerAgent()
@@ -68,6 +68,8 @@ local function OnLoad()
     
         self:ApplyNewPlayerConfig( game_state, config_options )
     end
+
+    -- Modify the behavior of GraftCollection.Rewardable so that coin can be rewarded if mutators are enabled
     GraftCollection.Rewardable = function(owner, fn)
         local function Filter( graft_def )
             if TheGame:GetGameState() and TheGame:GetGameState():GetPlayerAgent() and TheGame:GetGameState():GetPlayerAgent().graft_owner:GetGraft( "rook_coin_reward" ) then
@@ -86,11 +88,29 @@ local function OnLoad()
     end
     require "CrossCharacterCampaign:add_coin_graft_to_reward"
 
+    -- Change sal's brawl graft to general(for now)
     local collection = GraftCollection(function(graft_def) return graft_def.brawl == true end)
     for _, graft in ipairs(collection.items) do
         graft.series = "GENERAL"
     end
+    -- Add localization files
+    for k, filepath in ipairs( filepath.list_files( "CrossCharacterCampaign:loc", "*.po", true )) do
+        local name = filepath:match( "(.+)[.]po$" )
+        print(name)
+        if name then
+            local id = filepath:match("([^/]+)[.]po$")
+            print(id)
+            Content.AddPOFileToLocalization(id, filepath)
+        end
+    end
+    print("CrossCharacterCampaign added localization")
+    
+    -- Reload language because of how it works currently.
+    table.clear(Content.STRINGS)
+    LoadLanguage( TheGame:GetSettingsLanguage() )
 end
+
+
 
 return {
     OnLoad = OnLoad

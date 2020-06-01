@@ -41,3 +41,14 @@ local newGraftOptionsInitFn = function(self, graft)
     self.subtitle:SetText( string.upper( loc.format( LOC"UI.GRAFT_COLLECTION.SLOT_SUBTITLE", rarity_color, rarity_name, graftName, rarity_icon_string ) ) )
 end
 PickGraftOption.init = newGraftOptionsInitFn
+
+-- Don't work.
+Content.ExportTextureToPNG = function (path)
+    local texture = engine.asset.Texture(path .. ".tex")
+    print(texture)
+    print(engine.inst:SaveTextureToPNG(
+        texture,
+        "../image_exports/test.png" ))
+    print("Saved image to: image_exports/"..path..".png")
+end
+-- Content.ExportTextureToPNG("battle/accelerant")
