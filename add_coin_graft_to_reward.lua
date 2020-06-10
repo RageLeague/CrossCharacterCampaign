@@ -3,6 +3,8 @@ require "ui/widgets/screen"
 require "ui/widgets/tooltip_graft"
 require "ui/screens/replacegraftscreen"
 
+local filepath = require "util/filepath"
+
 local GRAFT_COLORS = {
     [GRAFT_TYPE.NEGOTIATION] = UICOLOURS.NEGOTIATION,
     [GRAFT_TYPE.COMBAT] = UICOLOURS.FIGHT,
@@ -44,11 +46,16 @@ PickGraftOption.init = newGraftOptionsInitFn
 
 -- Don't work.
 Content.ExportTextureToPNG = function (path)
-    local texture = engine.asset.Texture(path .. ".tex")
+    local texture = engine.asset.Texture(path..".tex")
     print(texture)
-    print(engine.inst:SaveTextureToPNG(
-        texture,
-        "../image_exports/test.png" ))
+    UIHelpers.SaveTextureAsPNG(texture, "image_exports/".. path)
     print("Saved image to: image_exports/"..path..".png")
 end
+Content.ExportAllTextureFromPath = function (path)
+    for k, filepath in ipairs( filepath.list_files( path, "*.tex", true )) do
+        local name = filepath:match( "(.+)[.]tex$" )
+        Content.ExportTextureToPNG(name)
+    end
+end
+-- Content.ExportTextureToPNG("icons/mutators/discharged")
 -- Content.ExportTextureToPNG("battle/accelerant")

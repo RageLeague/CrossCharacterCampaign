@@ -40,6 +40,9 @@ local function OnLoad()
 
     -- Add the above grafts as mutators
     for id, graft in pairs( MUTATORS ) do
+        local path = string.format( "CrossCharacterCampaign:icons/%s.png", id:lower() )
+        graft.img = engine.asset.Texture(path, true)
+        graft.img_path = graft.img and path
         Content.AddMutatorGraft( id, graft )
     end    
 
@@ -94,23 +97,21 @@ local function OnLoad()
         graft.series = "GENERAL"
     end
     -- Add localization files
-    for k, filepath in ipairs( filepath.list_files( "CrossCharacterCampaign:loc", "*.po", true )) do
-        local name = filepath:match( "(.+)[.]po$" )
-        print(name)
-        if name then
-            local id = filepath:match("([^/]+)[.]po$")
-            print(id)
-            Content.AddPOFileToLocalization(id, filepath)
-        end
-    end
-    print("CrossCharacterCampaign added localization")
     
-    -- Reload language because of how it works currently.
-    table.clear(Content.STRINGS)
-    LoadLanguage( TheGame:GetSettingsLanguage() )
+    
+    
 end
 
-
+for k, filepath in ipairs( filepath.list_files( "CrossCharacterCampaign:loc", "*.po", true )) do
+    local name = filepath:match( "(.+)[.]po$" )
+    print(name)
+    if name then
+        local id = filepath:match("([^/]+)[.]po$")
+        print(id)
+        Content.AddPOFileToLocalization(id, filepath)
+    end
+end
+print("CrossCharacterCampaign added localization")
 
 return {
     OnLoad = OnLoad

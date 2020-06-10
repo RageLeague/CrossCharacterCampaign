@@ -24,6 +24,11 @@ With the official mod update, you can read about how to set up mods [here](https
 
 ## CHANGELOG
 
+### Update 3
+
+* Adds "Japanese" "localization".
+* Adds icons to the new mutators.
+
 ### Update 2
 
 * Changed all Sal's brawl grafts to the general series, so other characters can use them.
