@@ -44,7 +44,7 @@ local newGraftOptionsInitFn = function(self, graft)
 end
 PickGraftOption.init = newGraftOptionsInitFn
 
--- Don't work.
+
 Content.ExportTextureToPNG = function (path)
     local texture = engine.asset.Texture(path..".tex")
     print(texture)

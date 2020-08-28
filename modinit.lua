@@ -1,6 +1,6 @@
 MountModData( "CrossCharacterCampaign" )
 
-local player_starts = require "content/player_starts"
+-- local player_starts = require "content/player_starts"
 
 local filepath = require "util/filepath"
 
@@ -51,9 +51,11 @@ local function OnLoad()
     
         local player = game_state:GetPlayerAgent()
         local OVERRIDE_CHARACTER = false
-        for id, data in pairs(TheGame:GetGameState():GetOptions().mutators) do
-            if MUTATORS[data] and MUTATORS[data].override_character then
-                OVERRIDE_CHARACTER = MUTATORS[data].override_character
+        if TheGame:GetGameState():GetOptions().mutators then
+            for id, data in pairs(TheGame:GetGameState():GetOptions().mutators) do
+                if MUTATORS[data] and MUTATORS[data].override_character then
+                    OVERRIDE_CHARACTER = MUTATORS[data].override_character
+                end
             end
         end
         if player == nil then
