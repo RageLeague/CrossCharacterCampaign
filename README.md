@@ -24,6 +24,13 @@ With the official mod update, you can read about how to set up mods [here](https
 
 ## CHANGELOG
 
+### Update 4
+
+* Remove an unnecessary dependency, as it causes problems in Experimental.
+* Fix bug where playing a game without mutators unlocked will cause the game to crash.
+* Changed "Japanese" "localization" to Simplified Chinese localization, since there's now actually Chinese in the game. Also updated the translation for Grafts.
+* Add Traditional Chinese localization. They are close enough anyways, might as well do it.
+
 ### Update 3
 
 * Adds "Japanese" "localization".
