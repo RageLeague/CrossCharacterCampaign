@@ -4,40 +4,39 @@ MountModData( "CrossCharacterCampaign" )
 
 local filepath = require "util/filepath"
 
-local MUTATORS = 
-{
-    play_as_sal =
-    {
-        name = "Play As Sal",
-        desc = "Play through this campaign as Sal",
-        -- img_path = "negotiation/modifiers/grifter.tex",
-        -- img = engine.asset.Texture( "negotiation/modifiers/grifter.tex", true ),
-        override_character = "SAL",
-        exclusion_ids = { "play_as_rook", "play_as_smith" },
-    },
-    play_as_rook =
-    {
-        name = "Play As Rook",
-        desc = "Play through this campaign as Rook",
-        override_character = "ROOK",
-        exclusion_ids = { "play_as_sal", "play_as_smith" },
-    },
-    play_as_smith =
-    {
-        name = "Play As Smith",
-        desc = "Play through this campaign as Smith",
-        override_character = "SMITH",
-        exclusion_ids = { "play_as_sal", "play_as_rook" },
-    },
-    rook_coin_reward =
-    {
-        name = "Rewardable Coins",
-        desc = "Coins will show up as graft rewards(when applicable, which basically means playing as Rook)",
-    },
-}
-
 local function OnLoad()
-
+    local MUTATORS = 
+    {
+        play_as_sal =
+        {
+            name = "Play As Sal",
+            desc = "Play through this campaign as Sal",
+            -- img_path = "negotiation/modifiers/grifter.tex",
+            -- img = engine.asset.Texture( "negotiation/modifiers/grifter.tex", true ),
+            override_character = "SAL",
+            exclusion_ids = { "play_as_rook", "play_as_smith" },
+        },
+        play_as_rook =
+        {
+            name = "Play As Rook",
+            desc = "Play through this campaign as Rook",
+            override_character = "ROOK",
+            exclusion_ids = { "play_as_sal", "play_as_smith" },
+        },
+        play_as_smith =
+        {
+            name = "Play As Smith",
+            desc = "Play through this campaign as Smith",
+            override_character = "SMITH",
+            exclusion_ids = { "play_as_sal", "play_as_rook" },
+        },
+        rook_coin_reward =
+        {
+            name = "Rewardable Coins",
+            desc = "Coins will show up as graft rewards(when applicable, which basically means playing as Rook)",
+        },
+    }
+    
     -- Add the above grafts as mutators
     for id, graft in pairs( MUTATORS ) do
         local path = string.format( "CrossCharacterCampaign:icons/%s.png", id:lower() )
