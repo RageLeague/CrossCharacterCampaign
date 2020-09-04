@@ -12,7 +12,11 @@ This simply allows you to play a character(with their unique deck, grafts, and m
 
 This mod also adds another mutator that allows coin grafts to show up as a generic graft reward. Only useful when playing as Rook, obviously.
 
+**Notice! The latest version is no longer backwards compatible! If you're on the main branch and haven't moved to experimental, use the "legacy" branch of the source code. On that branch it will never be updated again.**
+
 ## How to install?
+
+### Directly fron GitHub
 
 With the official mod update, you can read about how to set up mods [here](https://forums.kleientertainment.com/forums/topic/116914-early-mod-support/).
 
@@ -21,6 +25,12 @@ With the official mod update, you can read about how to set up mods [here](https
 3. Clone this repository into that folder.
 4. The `modinit.lua` file should be under `.../mods/[insert_repo_name_here]`.
 5. Volia! Now the mod should work.
+
+### Steam workshop
+
+1. Subscribe this item.
+2. Enable it in-game.
+3. Volia!
 
 ## CHANGELOG
 
