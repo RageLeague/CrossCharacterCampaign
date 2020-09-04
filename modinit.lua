@@ -1,41 +1,51 @@
-MountModData( "CrossCharacterCampaign" )
+-- MountModData( "CrossCharacterCampaign" )
 
 -- local player_starts = require "content/player_starts"
 
 local filepath = require "util/filepath"
-
-local function OnLoad()
-    local MUTATORS = 
+local MUTATORS = 
+{
+    play_as_sal =
     {
-        play_as_sal =
-        {
-            name = "Play As Sal",
-            desc = "Play through this campaign as Sal",
-            -- img_path = "negotiation/modifiers/grifter.tex",
-            -- img = engine.asset.Texture( "negotiation/modifiers/grifter.tex", true ),
-            override_character = "SAL",
-            exclusion_ids = { "play_as_rook", "play_as_smith" },
-        },
-        play_as_rook =
-        {
-            name = "Play As Rook",
-            desc = "Play through this campaign as Rook",
-            override_character = "ROOK",
-            exclusion_ids = { "play_as_sal", "play_as_smith" },
-        },
-        play_as_smith =
-        {
-            name = "Play As Smith",
-            desc = "Play through this campaign as Smith",
-            override_character = "SMITH",
-            exclusion_ids = { "play_as_sal", "play_as_rook" },
-        },
-        rook_coin_reward =
-        {
-            name = "Rewardable Coins",
-            desc = "Coins will show up as graft rewards(when applicable, which basically means playing as Rook)",
-        },
-    }
+        name = "Play As Sal",
+        desc = "Play through this campaign as Sal",
+        -- img_path = "negotiation/modifiers/grifter.tex",
+        -- img = engine.asset.Texture( "negotiation/modifiers/grifter.tex", true ),
+        override_character = "SAL",
+        exclusion_ids = { "play_as_rook", "play_as_smith" },
+    },
+    play_as_rook =
+    {
+        name = "Play As Rook",
+        desc = "Play through this campaign as Rook",
+        override_character = "ROOK",
+        exclusion_ids = { "play_as_sal", "play_as_smith" },
+    },
+    play_as_smith =
+    {
+        name = "Play As Smith",
+        desc = "Play through this campaign as Smith",
+        override_character = "SMITH",
+        exclusion_ids = { "play_as_sal", "play_as_rook" },
+    },
+    rook_coin_reward =
+    {
+        name = "Rewardable Coins",
+        desc = "Coins will show up as graft rewards(when applicable, which basically means playing as Rook)",
+    },
+}
+local function OnNewGame(mod, game_state)
+    if TheGame:GetGameState():GetOptions().mutators then
+        for id, data in pairs(TheGame:GetGameState():GetOptions().mutators) do
+            if MUTATORS[data] then
+                -- OVERRIDE_CHARACTER = MUTATORS[data].override_character
+                game_state:RequireMod(mod)
+                return
+            end
+        end
+    end
+end
+local function OnLoad()
     
     -- Add the above grafts as mutators
     for id, graft in pairs( MUTATORS ) do
@@ -115,5 +125,23 @@ end
 print("CrossCharacterCampaign added localization")
 
 return {
-    OnLoad = OnLoad
+    version = "1.1.0",
+    alias = "CrossCharacterCampaign",
+    
+    OnLoad = OnLoad,
+    OnNewGame = OnNewGame,
+
+    title = "Cross Character Campaign",
+    description =
+[[A mod that allows you to play as other characters in Griftlands.
+
+This mod adds 3 mutators, that allows you to play as the characters in Griftlands.
+
+You can also set the outfit of each character and apply the mutator. Then you can make that character wear the old character's outfit.
+
+This simply allows you to play a character(with their unique deck, grafts, and mechanics) in other character's story. It doesn't change any quests to reflect on the changes. Sometimes picking an option that doesn't make sense will cause the game to crash, so don't trade your non-existing lucky coin with Krog's weighted coin.
+
+This mod also adds another mutator that allows coin grafts to show up as a generic graft reward. Only useful when playing as Rook, obviously.
+]],
+    previewImagePath = "preview.png",
 }

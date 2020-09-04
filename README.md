@@ -24,23 +24,29 @@ With the official mod update, you can read about how to set up mods [here](https
 
 ## CHANGELOG
 
-### Update 4
+### 1.1.0
+
+* Workshop support!
+* Added preview icon.
+* Made it compatible with the latest experimental version(version 429468). This means that the old version probably won't work anymore.
+
+### 1.0.3
 
 * Remove an unnecessary dependency, as it causes problems in Experimental.
 * Fix bug where playing a game without mutators unlocked will cause the game to crash.
 * Changed "Japanese" "localization" to Simplified Chinese localization, since there's now actually Chinese in the game. Also updated the translation for Grafts.
 * Add Traditional Chinese localization. They are close enough anyways, might as well do it.
 
-### Update 3
+### 1.0.2
 
 * Adds "Japanese" "localization".
 * Adds icons to the new mutators.
 
-### Update 2
+### 1.0.1
 
 * Changed all Sal's brawl grafts to the general series, so other characters can use them.
 
-### Update 1
+### 1.0.0
 
 * A new mutator called "Rewardable Coins". Enable this mutator to allow Rook to acquire non-default coin outside of his campaign! Coins will show up as a generic graft reward sometimes.
 * Update the UI of pick graft screen so that coin grafts will show up as correct color and correct description.(Still incorrect icon right now, but there's little I can do about it.)
