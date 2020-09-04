@@ -1,5 +1,7 @@
 # GriftlandsCrossCharacterCampaign
 
+ **Legacy Branch. Use this if you're on the game version before the mod update.**
+ 
  A mod that allows you to play as other characters in Griftlands
 
 ## How does it work?
