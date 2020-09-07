@@ -112,23 +112,24 @@ local function OnLoad()
     
     
 end
-
-for k, filepath in ipairs( filepath.list_files( "CrossCharacterCampaign:loc", "*.po", true )) do
-    local name = filepath:match( "(.+)[.]po$" )
-    print(name)
-    if name then
-        local id = filepath:match("([^/]+)[.]po$")
-        print(id)
-        Content.AddPOFileToLocalization(id, filepath)
+local function OnPreLoad()
+    for k, filepath in ipairs( filepath.list_files( "CrossCharacterCampaign:loc", "*.po", true )) do
+        local name = filepath:match( "(.+)[.]po$" )
+        print(name)
+        if name then
+            local id = filepath:match("([^/]+)[.]po$")
+            print(id)
+            Content.AddPOFileToLocalization(id, filepath)
+        end
     end
+    print("CrossCharacterCampaign added localization")
 end
-print("CrossCharacterCampaign added localization")
-
 return {
-    version = "1.1.0",
+    version = "1.1.1",
     alias = "CrossCharacterCampaign",
     
     OnLoad = OnLoad,
+    OnPreLoad = OnPreLoad,
     OnNewGame = OnNewGame,
 
     title = "Cross Character Campaign",
