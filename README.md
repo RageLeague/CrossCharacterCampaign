@@ -1,6 +1,6 @@
-# GriftlandsCrossCharacterCampaign
+# Cross Character Campaign
 
- A mod that allows you to play as other characters in Griftlands
+A mod that allows you to play as other characters in Griftlands.
 
 ## How does it work?
 
