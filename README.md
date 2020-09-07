@@ -34,6 +34,10 @@ With the official mod update, you can read about how to set up mods [here](https
 
 ## CHANGELOG
 
+### 1.1.1
+
+* Minor update that makes the localization loading part in the OnPreLoad function.
+
 ### 1.1.0
 
 * Workshop support!
