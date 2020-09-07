@@ -133,7 +133,7 @@ return {
     OnNewGame = OnNewGame,
 
     title = "Cross Character Campaign",
-    description =
+    description = 
 [[[h1]Cross Character Campaign[/h1]
 
 A mod that allows you to play as other characters in Griftlands.

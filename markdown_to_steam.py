@@ -1,5 +1,6 @@
 f = open("README.md", "r")
 content = f.read()
+f.close()
 string_list = content.split("\n")
 outputlist = []
 for i in string_list:
@@ -14,4 +15,5 @@ for i in string_list:
         outputstring = outputstring.replace("**", "[b]",1)
         outputstring = outputstring.replace("**", "[/b]",1)
     outputlist.append(outputstring)
-print("\n".join(outputlist))
+f = open("STEAM_DESC.txt", "w")
+f.write("\n".join(outputlist))
