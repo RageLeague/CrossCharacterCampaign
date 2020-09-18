@@ -12,21 +12,27 @@ local MUTATORS =
         -- img_path = "negotiation/modifiers/grifter.tex",
         -- img = engine.asset.Texture( "negotiation/modifiers/grifter.tex", true ),
         override_character = "SAL",
-        exclusion_ids = { "play_as_rook", "play_as_smith" },
+        -- exclusion_ids = { "play_as_rook", "play_as_smith" },
     },
     play_as_rook =
     {
         name = "Play As Rook",
         desc = "Play through this campaign as Rook",
         override_character = "ROOK",
-        exclusion_ids = { "play_as_sal", "play_as_smith" },
+        -- exclusion_ids = { "play_as_sal", "play_as_smith" },
     },
     play_as_smith =
     {
         name = "Play As Smith",
         desc = "Play through this campaign as Smith",
         override_character = "SMITH",
-        exclusion_ids = { "play_as_sal", "play_as_rook" },
+        -- exclusion_ids = { "play_as_sal", "play_as_rook" },
+    },
+    play_as_pc_shel =
+    {
+        name = "Play As Shel",
+        desc = "I mean... You do you. I'm not here to judge",
+        override_character = "SHEL",
     },
     rook_coin_reward =
     {
@@ -34,26 +40,72 @@ local MUTATORS =
         desc = "Coins will show up as graft rewards(when applicable, which basically means playing as Rook)",
     },
 }
+local loaded_override_grafts = {}
 local function OnNewGame(mod, game_state)
     if TheGame:GetGameState():GetOptions().mutators then
         for id, data in pairs(TheGame:GetGameState():GetOptions().mutators) do
             if MUTATORS[data] then
                 -- OVERRIDE_CHARACTER = MUTATORS[data].override_character
                 game_state:RequireMod(mod)
+                if MUTATORS[data].character_from_mod then
+                    game_state:RequireMod(Content.FindMod(MUTATORS[data].character_from_mod))
+                end
                 return
             end
         end
     end
 end
-local function OnLoad()
-    
+local function UpdateExculsionIDs()
+    for i, id in ipairs(loaded_override_grafts) do
+        local exclusion_ids = shallowcopy(loaded_override_grafts)
+        table.arrayremove(exclusion_ids, id)
+        Content.GetGraft(id).exclusion_ids = exclusion_ids
+    end
+end
+-- for if other mods want to use this function
+function AddCharacterOverrideMutator(id, graft)
+    -- if graft.override_character then
+    --     graft.exclusion_ids = shallowcopy(loaded_override_grafts)
+    -- end
+    if graft.override_character and GetPlayerBackground(graft.override_character):GetModID() then
+        graft.character_from_mod = GetPlayerBackground(graft.override_character):GetModID()
+    end
+    Content.AddMutatorGraft( id, graft )
+    print("Loaded graft: "..id)
+    if graft.override_character then
+        table.insert(loaded_override_grafts, id)
+    end
+    UpdateExculsionIDs()
+end
+local function LoadMutators()
+    print("You called?")
+    local loaded_at_least_one_item = false
     -- Add the above grafts as mutators
     for id, graft in pairs( MUTATORS ) do
-        local path = string.format( "CrossCharacterCampaign:icons/%s.png", id:lower() )
-        graft.img = engine.asset.Texture(path, true)
-        graft.img_path = graft.img and path
-        Content.AddMutatorGraft( id, graft )
-    end    
+        if not graft.loaded then
+            print("Try load graft:"..id)
+            if graft.override_character and not GetPlayerBackground(graft.override_character) then
+                -- do nothing because that character doesn't exist.
+                print("Not a player background:"..graft.override_character)
+            else
+                
+                local path = string.format( "CrossCharacterCampaign:icons/%s.png", id:lower() )
+                graft.img = engine.asset.Texture(path, true)
+                graft.img_path = graft.img and path
+                AddCharacterOverrideMutator(id, graft)
+                graft.loaded = true
+                loaded_at_least_one_item = true
+            end
+        end
+    end
+    if loaded_at_least_one_item then
+        -- print(LoadMutators)
+        return LoadMutators
+    end
+end
+local function OnLoad()
+    
+    local load_fn = LoadMutators()
 
     -- Modify the PlayerAct.InitializeAct function to consider any mutators applied
     PlayerAct.InitializeAct = function( self, game_state, config_options)
@@ -62,8 +114,12 @@ local function OnLoad()
         local OVERRIDE_CHARACTER = false
         if TheGame:GetGameState():GetOptions().mutators then
             for id, data in pairs(TheGame:GetGameState():GetOptions().mutators) do
-                if MUTATORS[data] and MUTATORS[data].override_character then
-                    OVERRIDE_CHARACTER = MUTATORS[data].override_character
+                if Content.GetGraft(data).override_character then
+                    local player_background = GetPlayerBackground(Content.GetGraft(data).override_character)
+                    if player_background then
+                        OVERRIDE_CHARACTER = player_background.data.player_agent
+                        print("Override character to: "..OVERRIDE_CHARACTER)
+                    end
                 end
             end
         end
@@ -103,13 +159,13 @@ local function OnLoad()
     require "CrossCharacterCampaign:add_coin_graft_to_reward"
 
     -- Change sal's brawl graft to general(for now)
-    local collection = GraftCollection(function(graft_def) return graft_def.brawl == true end)
-    for _, graft in ipairs(collection.items) do
-        graft.series = "GENERAL"
-    end
+    -- local collection = GraftCollection(function(graft_def) return graft_def.brawl == true end)
+    -- for _, graft in ipairs(collection.items) do
+    --     graft.series = "GENERAL"
+    -- end
     -- Add localization files
     
-    
+    return load_fn
     
 end
 local function OnPreLoad()
