@@ -74,8 +74,8 @@ function AddCharacterOverrideMutator(id, graft)
     print("Loaded graft: "..id)
     if graft.override_character then
         table.insert(loaded_override_grafts, id)
+        UpdateExculsionIDs()
     end
-    UpdateExculsionIDs()
 end
 local function LoadMutators()
     print("You called?")
@@ -181,7 +181,7 @@ local function OnPreLoad()
     print("CrossCharacterCampaign added localization")
 end
 return {
-    version = "1.1.1",
+    version = "1.2.0",
     alias = "CrossCharacterCampaign",
     
     OnLoad = OnLoad,
