@@ -12,7 +12,7 @@ This simply allows you to play a character(with their unique deck, grafts, and m
 
 This mod also adds another mutator that allows coin grafts to show up as a generic graft reward. Only useful when playing as Rook, obviously.
 
-[b]Notice! The latest version is no longer backwards compatible! If you're on the main branch and haven't moved to experimental, use the "legacy" branch of the source code. On that branch it will never be updated again.[/b]
+[b]Notice! Since all versions of Griftlands now complies with the new modding system, there is no need for the old mod. I'll leave the old branch up, just in case, but you should really update your mod if you want it to work.[/b]
 
 [h2]How to install?[/h2]
 
@@ -32,7 +32,41 @@ With the official mod update, you can read about how to set up mods [here](https
 2. Enable it in-game.
 3. Volia!
 
+[h2]Notice for other modders[/h2]
+
+Since update 1.2.0, you can add a mutator for a character you added. A helper function "AddCharacterOverrideMutator(id, graft)" is added to the global space that allows you to easily add a character override mutator. If you're not interested, you should skip this section since it's quite boring.
+
+The function "AddCharacterOverrideMutator(id, graft)" accepts two parameters. "id" is the ID used to identify your mutator graft, and "graft" is a table that contains your mutator information. It has the same behaviour as "Content.AddMutatorGraft(id, graft)" if used on a normal mutator, but does different things if it is a character mutator.
+
+A "character mutator" modifies the current player character if selected. To set the character selected, set the field "override_character" to your player background ID.
+
+When the function is called on a character mutator, it does a few things:
+
+1. It tries to figure out the mod ID of the character background the mutator has. If it finds one, it assigns the mod ID to the field "character_from_mod" for determining mod requirements at the start of a new game.
+2. It adds the definition to Content.
+3. It tracks it to a list of character mutators, and change the field "exclusion_ids" of all character mutators to include all other character mutators, since it doesn't make sense for the player to be able to select two character mutators at once. Note any original "exclusion_ids" will be overwritten, so don't define a "exclusion_ids" field.
+
+For example, to add Sal's character mutator, this is the code that should be run.
+
+[code]
+AddCharacterOverrideMutator("play_as_sal",{
+    name = "Play As Sal",
+    desc = "Play through this campaign as Sal",
+    img = engine.asset.Texture("[path to file]", true),
+    img_path = "[path to file]",
+    override_character = "SAL",
+})
+[/code]
+
+Note: The function "AddCharacterOverrideMutator(id, graft)" is added to global space during the registration of the mod. You can probably call it during OnLoad. However, I'm not sure whether defining this function during registration will break anything, so it might be safer to call it during one level of PostLoad(the returned function from your OnLoad function).
+
 [h2]CHANGELOG[/h2]
+
+[h3]1.2.0[/h3]
+
+* Support for other mods! Other mods can add their custom characters as a mutator for this mod.
+* Added a new mutator if you are playing with Shel's Adventure, Klei's official mod. (https://steamcommunity.com/sharedfiles/filedetails/?id=2217590179)
+* Various other optimizations and safeguards.
 
 [h3]1.1.1[/h3]
 

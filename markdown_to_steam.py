@@ -10,6 +10,8 @@ for i in string_list:
         hashindex += 1
     if hashindex > 0:
         outputstring = "[h{0}]{1}[/h{0}]".format(hashindex, outputstring[hashindex + 1:])
+    outputstring = outputstring.replace("```lua","[code]")
+    outputstring = outputstring.replace("```","[/code]")
     outputstring = outputstring.replace("`","\"")
     while "**" in outputstring:
         outputstring = outputstring.replace("**", "[b]",1)
