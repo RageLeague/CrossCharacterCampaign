@@ -103,40 +103,36 @@ local function LoadMutators()
         return LoadMutators
     end
 end
+local function DetermineOverrideCharacter(game_state)
+    local OVERRIDE_CHARACTER = nil
+    if game_state:GetOptions().mutators then
+        for id, data in pairs(game_state:GetOptions().mutators) do
+            if Content.GetGraft(data).override_character then
+                local player_background = GetPlayerBackground(Content.GetGraft(data).override_character)
+                if player_background then
+                    OVERRIDE_CHARACTER = player_background
+                    -- print("Override character to: "..OVERRIDE_CHARACTER)
+                end
+            end
+        end
+    end
+    return OVERRIDE_CHARACTER and OVERRIDE_CHARACTER:CreateAgent()
+end
 local function OnLoad()
     
     local load_fn = LoadMutators()
 
+    local old_fn = PlayerAct.InitializeAct
     -- Modify the PlayerAct.InitializeAct function to consider any mutators applied
     PlayerAct.InitializeAct = function( self, game_state, config_options)
-    
-        local player = game_state:GetPlayerAgent()
-        local OVERRIDE_CHARACTER = false
-        if TheGame:GetGameState():GetOptions().mutators then
-            for id, data in pairs(TheGame:GetGameState():GetOptions().mutators) do
-                if Content.GetGraft(data).override_character then
-                    local player_background = GetPlayerBackground(Content.GetGraft(data).override_character)
-                    if player_background then
-                        OVERRIDE_CHARACTER = player_background.data.player_agent
-                        print("Override character to: "..OVERRIDE_CHARACTER)
-                    end
-                end
+        if game_state:GetPlayerAgent() == nil then
+            local OVERRIDE_CHARACTER = DetermineOverrideCharacter(game_state)
+            if OVERRIDE_CHARACTER then
+                -- local player = Agent(OVERRIDE_CHARACTER)
+                game_state:AddPlayerAgent( OVERRIDE_CHARACTER )
             end
         end
-        if player == nil then
-            player = Agent( TheGame:GetLocalSettings().PLAYER_AGENT or OVERRIDE_CHARACTER or self.background.data.player_agent )
-            game_state:AddPlayerAgent( player )
-        end
-    
-        if self.data.starting_fn then
-            self.data.starting_fn(player)
-        end        
-    
-        if self.data.entry_point then
-            player:MoveToLocation(self.data.entry_point:GetLocation())
-        end
-    
-        self:ApplyNewPlayerConfig( game_state, config_options )
+        old_fn(self, game_state, config_options)
     end
 
     -- Modify the behavior of GraftCollection.Rewardable so that coin can be rewarded if mutators are enabled
@@ -181,7 +177,7 @@ local function OnPreLoad()
     print("CrossCharacterCampaign added localization")
 end
 return {
-    version = "1.2.0",
+    version = "1.3.0",
     alias = "CrossCharacterCampaign",
     
     OnLoad = OnLoad,
@@ -191,7 +187,7 @@ return {
     title = "Cross Character Campaign",
     description = 
 [[A mod that allows you to play as other characters in Griftlands.
-This mod adds 3 mutators, that allows you to play as the characters in Griftlands.
+This mod adds mutators that allows you to play as other characters in Griftlands.
 You can also set the outfit of each character and apply the mutator. Then you can make that character wear the old character's outfit.  
 This simply allows you to play a character(with their unique deck, grafts, and mechanics) in other character's story. It doesn't change 
 any quests to reflect on the changes. Sometimes picking an option that doesn't make sense will cause the game to crash, so don't trade your non-existing lucky coin with Krog's weighted coin.

@@ -4,7 +4,7 @@ A mod that allows you to play as other characters in Griftlands.
 
 ## How does it work?
 
-This mod adds 3 mutators, that allows you to play as the characters in Griftlands.
+This mod adds mutators that allows you to play as other characters in Griftlands.
 
 You can also set the outfit of each character and apply the mutator. Then you can make that character wear the old character's outfit.
 
@@ -63,6 +63,12 @@ AddCharacterOverrideMutator("play_as_sal",{
 Note: The function `AddCharacterOverrideMutator(id, graft)` is added to global space during the registration of the mod. You can probably call it during OnLoad. However, I'm not sure whether defining this function during registration will break anything, so it might be safer to call it during one level of PostLoad(the returned function from your OnLoad function).
 
 ## CHANGELOG
+
+### 1.3.0
+
+* Make this mod even more compatible with further mods! It's probably because the "further" mods part is my mod, and I need to fix how I implemented the character replacement function.
+* Now instead of rewriting the entire function, it uses the old function, but creates a player character beforehand if a character mutator is selected.
+* Although this update is a minor fix, the actual fix done to it is extremely major, so the minor version number increased. This may or may not break some things, so please let me know if this update broke your mod so I can fix it.
 
 ### 1.2.0
 
