@@ -107,7 +107,7 @@ local function DetermineOverrideCharacter(game_state)
     local OVERRIDE_CHARACTER = nil
     if game_state:GetOptions().mutators then
         for id, data in pairs(game_state:GetOptions().mutators) do
-            if Content.GetGraft(data).override_character then
+            if Content.GetGraft(data) and Content.GetGraft(data).override_character then
                 local player_background = GetPlayerBackground(Content.GetGraft(data).override_character)
                 if player_background then
                     OVERRIDE_CHARACTER = player_background
@@ -177,7 +177,7 @@ local function OnPreLoad()
     print("CrossCharacterCampaign added localization")
 end
 return {
-    version = "1.3.0",
+    version = "1.3.1",
     alias = "CrossCharacterCampaign",
     
     OnLoad = OnLoad,
