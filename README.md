@@ -64,6 +64,10 @@ Note: The function `AddCharacterOverrideMutator(id, graft)` is added to global s
 
 ## CHANGELOG
 
+### 1.3.1
+
+* Added a nil-check for mutators selected because it's possible to start a game with invalid mutators, and that would crash the game.
+
 ### 1.3.0
 
 * Make this mod even more compatible with further mods! It's probably because the "further" mods part is my mod, and I need to fix how I implemented the character replacement function.
