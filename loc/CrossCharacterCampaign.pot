@@ -1,3 +1,28 @@
+﻿#: GRAFT.PLAY_AS_PC_SHEL.DESC
+msgctxt "GRAFT.PLAY_AS_PC_SHEL.DESC"
+msgid "Play through this campaign as Shel...?"
+msgstr ""
+
+#: GRAFT.PLAY_AS_PC_SHEL.NAME
+msgctxt "GRAFT.PLAY_AS_PC_SHEL.NAME"
+msgid "Play As Shel"
+msgstr ""
+
+#: GRAFT.PLAY_AS_RANDOM.DESC
+msgctxt "GRAFT.PLAY_AS_RANDOM.DESC"
+msgid "Play as a random character. Who knows what's it going to be?"
+msgstr ""
+
+#: GRAFT.PLAY_AS_RANDOM.NAME
+msgctxt "GRAFT.PLAY_AS_RANDOM.NAME"
+msgid "Play As Random"
+msgstr ""
+
+#: GRAFT.PLAY_AS_RANDOM.SELECTED_CHAR
+msgctxt "GRAFT.PLAY_AS_RANDOM.SELECTED_CHAR"
+msgid "(Current character: {1#agent})"
+msgstr ""
+
 #: GRAFT.PLAY_AS_ROOK.DESC
 msgctxt "GRAFT.PLAY_AS_ROOK.DESC"
 msgid "Play through this campaign as Rook"
@@ -37,3 +62,4 @@ msgstr ""
 msgctxt "GRAFT.ROOK_COIN_REWARD.NAME"
 msgid "Rewardable Coins"
 msgstr ""
+
