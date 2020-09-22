@@ -2,6 +2,19 @@
 
 A mod that allows you to play as other characters in Griftlands.
 
+Version: 1.3.2
+
+Author: RageLeague
+
+Supported Languages: English, 简体中文, 繁體中文.
+
+Supported Characters:
+
+* Sal (Base game)
+* Rook (Base game)
+* Smith (Base game)
+* PC Shel (Shel's Adventure - https://steamcommunity.com/sharedfiles/filedetails/?id=2217590179)
+
 [h2]How does it work?[/h2]
 
 This mod adds mutators that allows you to play as other characters in Griftlands.
@@ -11,6 +24,10 @@ You can also set the outfit of each character and apply the mutator. Then you ca
 This simply allows you to play a character(with their unique deck, grafts, and mechanics) in other character's story. It doesn't change any quests to reflect on the changes. Sometimes picking an option that doesn't make sense will cause the game to crash, so don't trade your non-existing lucky coin with Krog's weighted coin.
 
 This mod also adds another mutator that allows coin grafts to show up as a generic graft reward. Only useful when playing as Rook, obviously.
+
+This mod adds an additional mutator that will randomly select a character. The characters selected are from all player backgrounds(even modded ones that doesn't have a mutator defined), and the randomization is rigged so that you will not get too many streaks in a row.
+
+This mod is compatible with most other mods, however if it is not compatible with some mods, please let me know!
 
 [b]Notice! Since all versions of Griftlands now complies with the new modding system, there is no need for the old mod. I'll leave the old branch up, just in case, but you should really update your mod if you want it to work.[/b]
 
@@ -63,6 +80,11 @@ AddCharacterOverrideMutator("play_as_sal",{
 Note: The function "AddCharacterOverrideMutator(id, graft)" is added to global space during the registration of the mod. You can probably call it during OnLoad. However, I'm not sure whether defining this function during registration will break anything, so it might be safer to call it during one level of PostLoad(the returned function from your OnLoad function).
 
 [h2]CHANGELOG[/h2]
+
+[h3]1.3.2[/h3]
+
+* Added a random character mutator that will randomly select a character. The characters selected are from all player backgrounds(even modded ones that doesn't have a mutator defined), and the randomization is rigged so that you will not get too many streaks in a row.
+* Updated strings for Chinese Simplified and Traditional.
 
 [h3]1.3.1[/h3]
 

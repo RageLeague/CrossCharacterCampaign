@@ -31,7 +31,7 @@ local MUTATORS =
     play_as_pc_shel =
     {
         name = "Play As Shel",
-        desc = "I mean... You do you. I'm not here to judge",
+        desc = "Play through this campaign as Shel...?",
         override_character = "SHEL",
     },
     rook_coin_reward =
@@ -39,6 +39,22 @@ local MUTATORS =
         name = "Rewardable Coins",
         desc = "Coins will show up as graft rewards(when applicable, which basically means playing as Rook)",
     },
+    play_as_random =
+    {
+        name = "Play As Random",
+        desc = "Play as a random character. Who knows what's it going to be?",
+        loc_strings = {
+            SELECTED_CHAR = "(Current character: {1#agent})",
+        },
+        desc_fn = function(self, fmt_str)
+            if TheGame:GetGameState() then
+                return fmt_str .. "\n" .. loc.format(self:GetDef():GetLocalizedString( "SELECTED_CHAR" ), TheGame:GetGameState():GetPlayerAgent())
+            else
+                return fmt_str
+            end
+        end,
+        override_character = true,
+    }
 }
 local loaded_override_grafts = {}
 local function OnNewGame(mod, game_state)
@@ -67,7 +83,7 @@ function AddCharacterOverrideMutator(id, graft)
     -- if graft.override_character then
     --     graft.exclusion_ids = shallowcopy(loaded_override_grafts)
     -- end
-    if graft.override_character and GetPlayerBackground(graft.override_character):GetModID() then
+    if graft.override_character and graft.override_character ~= true and GetPlayerBackground(graft.override_character):GetModID() then
         graft.character_from_mod = GetPlayerBackground(graft.override_character):GetModID()
     end
     Content.AddMutatorGraft( id, graft )
@@ -84,7 +100,7 @@ local function LoadMutators()
     for id, graft in pairs( MUTATORS ) do
         if not graft.loaded then
             print("Try load graft:"..id)
-            if graft.override_character and not GetPlayerBackground(graft.override_character) then
+            if graft.override_character and graft.override_character ~= true and not GetPlayerBackground(graft.override_character) then
                 -- do nothing because that character doesn't exist.
                 print("Not a player background:"..graft.override_character)
             else
@@ -108,9 +124,20 @@ local function DetermineOverrideCharacter(game_state)
     if game_state:GetOptions().mutators then
         for id, data in pairs(game_state:GetOptions().mutators) do
             if Content.GetGraft(data) and Content.GetGraft(data).override_character then
-                local player_background = GetPlayerBackground(Content.GetGraft(data).override_character)
-                if player_background then
-                    OVERRIDE_CHARACTER = player_background
+                if Content.GetGraft(data).override_character == true then
+                    -- local other_mutators = shallowcopy(loaded_override_grafts)
+                    -- table.arrayremove(other_mutators, data)
+                    -- data = TheGame:GetGameProfile():GetNoStreakRandom("CCC_RANDOM_CHARACTER_MUTATOR", other_mutators, 2)
+                    local background_ids = copykeys(Content.internal.PLAYER_DATA)
+                    
+                    local selected_background = TheGame:GetGameProfile():GetNoStreakRandom("CCC_RANDOM_CHARACTER_BACKGROUND", background_ids, 2)
+                    OVERRIDE_CHARACTER = GetPlayerBackground(selected_background)
+                else
+
+                    local player_background = GetPlayerBackground(Content.GetGraft(data).override_character)
+                    if player_background then
+                        OVERRIDE_CHARACTER = player_background
+                    end
                     -- print("Override character to: "..OVERRIDE_CHARACTER)
                 end
             end
@@ -177,7 +204,7 @@ local function OnPreLoad()
     print("CrossCharacterCampaign added localization")
 end
 return {
-    version = "1.3.1",
+    version = "1.3.2",
     alias = "CrossCharacterCampaign",
     
     OnLoad = OnLoad,
@@ -186,11 +213,8 @@ return {
 
     title = "Cross Character Campaign",
     description = 
-[[A mod that allows you to play as other characters in Griftlands.
-This mod adds mutators that allows you to play as other characters in Griftlands.
+[[This mod adds mutators that allows you to play as other characters in Griftlands.
 You can also set the outfit of each character and apply the mutator. Then you can make that character wear the old character's outfit.  
-This simply allows you to play a character(with their unique deck, grafts, and mechanics) in other character's story. It doesn't change 
-any quests to reflect on the changes. Sometimes picking an option that doesn't make sense will cause the game to crash, so don't trade your non-existing lucky coin with Krog's weighted coin.
-This mod also adds another mutator that allows coin grafts to show up as a generic graft reward. Only useful when playing as Rook, obviously.]],
+This mod also adds another mutator that allows coin grafts to show up as a generic graft reward and an additional mutator that will randomly select a character.]],
     previewImagePath = "preview.png",
 }
