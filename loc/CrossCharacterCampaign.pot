@@ -1,11 +1,21 @@
-﻿#: GRAFT.PLAY_AS_PC_SHEL.DESC
-msgctxt "GRAFT.PLAY_AS_PC_SHEL.DESC"
-msgid "Play through this campaign as Shel...?"
+﻿#: GRAFT.PLAY_AS_PC_ARINT.DESC
+msgctxt "GRAFT.PLAY_AS_PC_ARINT.DESC"
+msgid "Play through this campaign as Arint"
 msgstr ""
 
-#: GRAFT.PLAY_AS_PC_SHEL.NAME
-msgctxt "GRAFT.PLAY_AS_PC_SHEL.NAME"
-msgid "Play As Shel"
+#: GRAFT.PLAY_AS_PC_ARINT.NAME
+msgctxt "GRAFT.PLAY_AS_PC_ARINT.NAME"
+msgid "Play As Arint"
+msgstr ""
+
+#: GRAFT.PLAY_AS_PC_KASHIO.DESC
+msgctxt "GRAFT.PLAY_AS_PC_KASHIO.DESC"
+msgid "Play through this campaign as Kashio"
+msgstr ""
+
+#: GRAFT.PLAY_AS_PC_KASHIO.NAME
+msgctxt "GRAFT.PLAY_AS_PC_KASHIO.NAME"
+msgid "Play As Kashio"
 msgstr ""
 
 #: GRAFT.PLAY_AS_RANDOM.DESC

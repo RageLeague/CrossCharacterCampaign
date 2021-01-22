@@ -2,7 +2,9 @@
 
 A mod that allows you to play as other characters in Griftlands.
 
-Version: 1.3.2
+Version: 1.4.0
+Workshop ID: 2219176890
+Alias(Used for mod dependency): CrossCharacterCampaign
 
 Author: RageLeague
 
@@ -14,6 +16,8 @@ Supported Characters:
 * Rook (Base game)
 * Smith (Base game)
 * PC Shel (Shel's Adventure - https://steamcommunity.com/sharedfiles/filedetails/?id=2217590179)
+* PC Arint (Arint's Last Day - https://steamcommunity.com/sharedfiles/filedetails/?id=2256085147)
+* PC Kashio (Rise of Kashio - https://steamcommunity.com/sharedfiles/filedetails/?id=2266976421)
 
 ## How does it work?
 
@@ -33,7 +37,7 @@ This mod is compatible with most other mods, however if it is not compatible wit
 
 ## How to install?
 
-### Directly fron GitHub
+### Directly from GitHub
 
 With the official mod update, you can read about how to set up mods at https://forums.kleientertainment.com/forums/topic/116914-early-mod-support/.
 
@@ -50,6 +54,20 @@ With the new official workshop support, you can directly install mods from steam
 1. Subscribe this item.
 2. Enable it in-game.
 3. Volia!
+
+## Translators wanted!
+
+This mod is designed around the game's localization systems, and it would be a shame to let it go to waste. If you want to help me out by adding a localization file for a language of your choice, then go for it! Feel free to contact me about this topic.
+
+To generate a .pot file for this mod, do the following:
+
+1. If debug mode is not enabled first, enable it. (Please reference https://forums.kleientertainment.com/forums/topic/121803-your-first-mod/ for more details)
+2. Run the game while this mod is active.
+3. Press F10 to open the debug localization screen.
+4. Select the mod ID of this mod. If you installed it with steam workshop, it should be the workshop ID. If you installed it via GitHub, it should be the folder name of the mod folder.
+5. Press Export Localization. The localization file should be found in the same folder as your game files(NOT your save files!).
+
+A .pot file should also be found in the folders of this mod, if you can find it. It is NOT guaranteed to be up to date.
 
 ## Notice for other modders
 
@@ -80,6 +98,11 @@ AddCharacterOverrideMutator("play_as_sal",{
 Note: The function `AddCharacterOverrideMutator(id, graft)` is added to global space during the registration of the mod. You can probably call it during OnLoad. However, I'm not sure whether defining this function during registration will break anything, so it might be safer to call it during one level of PostLoad(the returned function from your OnLoad function).
 
 ## CHANGELOG
+
+### 1.4.0
+
+* Added two new modded characters: PC Arint (https://steamcommunity.com/sharedfiles/filedetails/?id=2256085147) and PC Kashio (https://steamcommunity.com/sharedfiles/filedetails/?id=2266976421).
+* Added a system that allows one mutator trying to match multiple backgrounds, in case the dev of the PC Arint mod decides for some reason to change the name of the player background.
 
 ### 1.3.2
 
