@@ -247,7 +247,15 @@ return {
     OnPreLoad = OnPreLoad,
     OnNewGame = OnNewGame,
 
-    load_after = {"LOSTPASSAGE", "CHS", "ARINTDEMO", "RISE"},
+    load_after = {
+        -- This mod loads after language mods, to add the po files to that language.
+        "CHS", 
+        "CHT",
+        -- This mod loads after character mods
+        "LOSTPASSAGE", 
+        "ARINTDEMO", 
+        "RISE"
+    },
 
     title = "Cross Character Campaign",
     description = 
