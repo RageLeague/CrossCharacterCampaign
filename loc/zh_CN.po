@@ -5,40 +5,50 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: zh_TW\n"
+"Language: zh\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.1\n"
+"X-Generator: Poedit 2.4.2\n"
 
-msgctxt "GRAFT.PLAY_AS_PC_SHEL.DESC"
-msgid "Play through this campaign as Shel...?"
-msgstr "這一局玩簫...?"
+msgctxt "GRAFT.PLAY_AS_PC_ARINT.DESC"
+msgid "Play through this campaign as Arint"
+msgstr "使用阿林特来玩这个故事"
 
-#: GRAFT.PLAY_AS_PC_SHEL.NAME
-msgctxt "GRAFT.PLAY_AS_PC_SHEL.NAME"
-msgid "Play As Shel"
-msgstr "使用簫"
+#: GRAFT.PLAY_AS_PC_ARINT.NAME
+msgctxt "GRAFT.PLAY_AS_PC_ARINT.NAME"
+msgid "Play As Arint"
+msgstr "使用阿林特"
+
+#: GRAFT.PLAY_AS_PC_KASHIO.DESC
+msgctxt "GRAFT.PLAY_AS_PC_KASHIO.DESC"
+msgid "Play through this campaign as Kashio"
+msgstr "使用凯石傲来玩这个故事"
+
+#: GRAFT.PLAY_AS_PC_KASHIO.NAME
+msgctxt "GRAFT.PLAY_AS_PC_KASHIO.NAME"
+msgid "Play As Kashio"
+msgstr "使用凯石傲"
 
 #: GRAFT.PLAY_AS_RANDOM.DESC
 msgctxt "GRAFT.PLAY_AS_RANDOM.DESC"
 msgid "Play as a random character. Who knows what's it going to be?"
-msgstr "使用一個隨機角色來玩這個故事。誰知道這個角色會是誰呢？"
+msgstr "使用一个随机角色来玩这个故事。谁知道这个角色会是谁呢？"
 
 #: GRAFT.PLAY_AS_RANDOM.NAME
 msgctxt "GRAFT.PLAY_AS_RANDOM.NAME"
 msgid "Play As Random"
-msgstr "使用隨機角色"
+msgstr "使用随机角色"
 
 #: GRAFT.PLAY_AS_RANDOM.SELECTED_CHAR
 msgctxt "GRAFT.PLAY_AS_RANDOM.SELECTED_CHAR"
 msgid "(Current character: {1#agent})"
-msgstr "（當前角色：{1#agent}）"
+msgstr "（当前角色：{1#agent}）"
 
 #: GRAFT.PLAY_AS_ROOK.DESC
 msgctxt "GRAFT.PLAY_AS_ROOK.DESC"
 msgid "Play through this campaign as Rook"
-msgstr "使用車來玩這個故事"
+msgstr "使用車来玩这个故事"
 
 #: GRAFT.PLAY_AS_ROOK.NAME
 msgctxt "GRAFT.PLAY_AS_ROOK.NAME"
@@ -48,31 +58,39 @@ msgstr "使用車"
 #: GRAFT.PLAY_AS_SAL.DESC
 msgctxt "GRAFT.PLAY_AS_SAL.DESC"
 msgid "Play through this campaign as Sal"
-msgstr "使用騷來玩這個故事"
+msgstr "使用骚来玩这个故事"
 
 #: GRAFT.PLAY_AS_SAL.NAME
 msgctxt "GRAFT.PLAY_AS_SAL.NAME"
 msgid "Play As Sal"
-msgstr "使用騷"
+msgstr "使用骚"
 
 #: GRAFT.PLAY_AS_SMITH.DESC
 msgctxt "GRAFT.PLAY_AS_SMITH.DESC"
 msgid "Play through this campaign as Smith"
-msgstr "使用史密達來玩這個故事"
+msgstr "使用史密达来玩这个故事"
 
 #: GRAFT.PLAY_AS_SMITH.NAME
 msgctxt "GRAFT.PLAY_AS_SMITH.NAME"
 msgid "Play As Smith"
-msgstr "使用史密達"
+msgstr "使用史密达"
 
 #: GRAFT.ROOK_COIN_REWARD.DESC
 msgctxt "GRAFT.ROOK_COIN_REWARD.DESC"
 msgid ""
 "Coins will show up as graft rewards(when applicable, which basically means "
 "playing as Rook)"
-msgstr "獎勵移植物時可能獎勵硬幣（如果能用的話（其實只有車才能用））"
+msgstr "奖励移植物时可能奖励硬币（如果能用的话（其实只有車才能用））"
 
 #: GRAFT.ROOK_COIN_REWARD.NAME
 msgctxt "GRAFT.ROOK_COIN_REWARD.NAME"
 msgid "Rewardable Coins"
-msgstr "硬幣獎勵"
+msgstr "硬币奖励"
+
+#~ msgctxt "GRAFT.PLAY_AS_PC_SHEL.DESC"
+#~ msgid "Play through this campaign as Shel...?"
+#~ msgstr "这一局玩箫...?"
+
+#~ msgctxt "GRAFT.PLAY_AS_PC_SHEL.NAME"
+#~ msgid "Play As Shel"
+#~ msgstr "使用箫"

@@ -34,6 +34,18 @@ local MUTATORS =
         desc = "Play through this campaign as Shel...?",
         override_character = "SHEL",
     },
+    play_as_pc_arint =
+    {
+        name = "Play As Arint",
+        desc = "Play through this campaign as Arint",
+        override_character = {"PC_ARINT_DEMO"},
+    },
+    play_as_pc_kashio =
+    {
+        name = "Play As Kashio",
+        desc = "Play through this campaign as Kashio",
+        override_character = "KASHIO_PLAYER",
+    },
     rook_coin_reward =
     {
         name = "Rewardable Coins",
@@ -83,6 +95,18 @@ function AddCharacterOverrideMutator(id, graft)
     -- if graft.override_character then
     --     graft.exclusion_ids = shallowcopy(loaded_override_grafts)
     -- end
+    if graft.override_character and type(graft.override_character) == "table" then
+        for i, id in ipairs(graft.override_character) do
+            if GetPlayerBackground(id) then
+                graft.override_character = id
+                break
+            end
+        end
+    end
+    if graft.override_character and graft.override_character ~= true and not GetPlayerBackground(graft.override_character) then
+        print("Invalid character, skip adding")
+        return
+    end
     if graft.override_character and graft.override_character ~= true and GetPlayerBackground(graft.override_character):GetModID() then
         graft.character_from_mod = GetPlayerBackground(graft.override_character):GetModID()
     end
@@ -100,9 +124,17 @@ local function LoadMutators()
     for id, graft in pairs( MUTATORS ) do
         if not graft.loaded then
             print("Try load graft:"..id)
+            if graft.override_character and type(graft.override_character) == "table" then
+                for i, id in ipairs(graft.override_character) do
+                    if GetPlayerBackground(id) then
+                        graft.override_character = id
+                        break
+                    end
+                end
+            end
             if graft.override_character and graft.override_character ~= true and not GetPlayerBackground(graft.override_character) then
                 -- do nothing because that character doesn't exist.
-                print("Not a player background:"..graft.override_character)
+                print(loc.format("Not a player background:{1}", graft.override_character))
             else
                 
                 local path = string.format( "CrossCharacterCampaign:icons/%s.png", id:lower() )
@@ -114,10 +146,11 @@ local function LoadMutators()
             end
         end
     end
-    if loaded_at_least_one_item then
-        -- print(LoadMutators)
-        return LoadMutators
-    end
+    -- Now there's the load order thing i wrote, it isn't necessary anymore.
+    -- if loaded_at_least_one_item then
+    --     -- print(LoadMutators)
+    --     return LoadMutators
+    -- end
 end
 local function DetermineOverrideCharacter(game_state)
     local OVERRIDE_CHARACTER = nil
@@ -194,22 +227,35 @@ end
 local function OnPreLoad()
     for k, filepath in ipairs( filepath.list_files( "CrossCharacterCampaign:loc", "*.po", true )) do
         local name = filepath:match( "(.+)[.]po$" )
-        print(name)
-        if name then
-            local id = filepath:match("([^/]+)[.]po$")
-            print(id)
-            Content.AddPOFileToLocalization(id, filepath)
+        local lang_id = name:match("([_%w]+)$")
+        lang_id = lang_id:gsub("_", "-")
+        -- require(name)
+        print(lang_id)
+        for id, data in pairs(Content.GetLocalizations()) do
+            if data.default_languages and table.arraycontains(data.default_languages, lang_id) then
+                Content.AddPOFileToLocalization(id, filepath)
+            end
         end
     end
     print("CrossCharacterCampaign added localization")
 end
 return {
-    version = "1.3.2",
+    version = "1.4.1",
     alias = "CrossCharacterCampaign",
     
     OnLoad = OnLoad,
     OnPreLoad = OnPreLoad,
     OnNewGame = OnNewGame,
+
+    load_after = {
+        -- This mod loads after language mods, to add the po files to that language.
+        "CHS", 
+        "CHT",
+        -- This mod loads after character mods
+        "LOSTPASSAGE", 
+        "ARINTDEMO", 
+        "RISE"
+    },
 
     title = "Cross Character Campaign",
     description = 
