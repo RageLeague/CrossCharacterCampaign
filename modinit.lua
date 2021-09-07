@@ -240,7 +240,7 @@ local function OnPreLoad()
     print("CrossCharacterCampaign added localization")
 end
 return {
-    version = "1.4.1",
+    version = "1.4.2",
     alias = "CrossCharacterCampaign",
 
     OnLoad = OnLoad,

@@ -2,9 +2,10 @@
 
 A mod that allows you to play as other characters in Griftlands.
 
-Version: 1.4.1
+Version: 1.4.2
 Workshop ID: 2219176890
 Alias(Used for mod dependency): CrossCharacterCampaign
+Github Link: https://github.com/RageLeague/CrossCharacterCampaign
 
 Author: RageLeague
 
@@ -98,6 +99,10 @@ AddCharacterOverrideMutator("play_as_sal",{
 Note: The function `AddCharacterOverrideMutator(id, graft)` is added to global space during the registration of the mod. You can probably call it during OnLoad. However, I'm not sure whether defining this function during registration will break anything, so it might be safer to call it during one level of PostLoad(the returned function from your OnLoad function).
 
 ## CHANGELOG
+
+### 1.4.2
+
+* Mutator for PC Arint now also works for the test branch.
 
 ### 1.4.1
 
