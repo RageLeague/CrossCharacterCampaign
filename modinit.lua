@@ -3,7 +3,7 @@
 -- local player_starts = require "content/player_starts"
 
 local filepath = require "util/filepath"
-local MUTATORS = 
+local MUTATORS =
 {
     play_as_sal =
     {
@@ -38,7 +38,7 @@ local MUTATORS =
     {
         name = "Play As Arint",
         desc = "Play through this campaign as Arint",
-        override_character = {"PC_ARINT_DEMO"},
+        override_character = {"PC_ARINT", "PC_ARINT_DEMO"},
     },
     play_as_pc_kashio =
     {
@@ -136,7 +136,7 @@ local function LoadMutators()
                 -- do nothing because that character doesn't exist.
                 print(loc.format("Not a player background:{1}", graft.override_character))
             else
-                
+
                 local path = string.format( "CrossCharacterCampaign:icons/%s.png", id:lower() )
                 graft.img = engine.asset.Texture(path, true)
                 graft.img_path = graft.img and path
@@ -162,7 +162,7 @@ local function DetermineOverrideCharacter(game_state)
                     -- table.arrayremove(other_mutators, data)
                     -- data = TheGame:GetGameProfile():GetNoStreakRandom("CCC_RANDOM_CHARACTER_MUTATOR", other_mutators, 2)
                     local background_ids = copykeys(Content.internal.PLAYER_DATA)
-                    
+
                     local selected_background = TheGame:GetGameProfile():GetNoStreakRandom("CCC_RANDOM_CHARACTER_BACKGROUND", background_ids, 2)
                     OVERRIDE_CHARACTER = GetPlayerBackground(selected_background)
                 else
@@ -179,7 +179,7 @@ local function DetermineOverrideCharacter(game_state)
     return OVERRIDE_CHARACTER and OVERRIDE_CHARACTER:CreateAgent()
 end
 local function OnLoad()
-    
+
     local load_fn = LoadMutators()
 
     local old_fn = PlayerAct.InitializeAct
@@ -204,7 +204,7 @@ local function OnLoad()
                 return graft_def.type == GRAFT_TYPE.COMBAT or graft_def.type == GRAFT_TYPE.NEGOTIATION
             end
         end
-        
+
         local collection = GraftCollection(fn):NotUnique():NotLocked():NotBoss():NotUpgraded():Filter( Filter )
         if owner then
             collection:NotInstalled(owner)
@@ -220,9 +220,9 @@ local function OnLoad()
     --     graft.series = "GENERAL"
     -- end
     -- Add localization files
-    
+
     return load_fn
-    
+
 end
 local function OnPreLoad()
     for k, filepath in ipairs( filepath.list_files( "CrossCharacterCampaign:loc", "*.po", true )) do
@@ -242,25 +242,25 @@ end
 return {
     version = "1.4.1",
     alias = "CrossCharacterCampaign",
-    
+
     OnLoad = OnLoad,
     OnPreLoad = OnPreLoad,
     OnNewGame = OnNewGame,
 
     load_after = {
         -- This mod loads after language mods, to add the po files to that language.
-        "CHS", 
+        "CHS",
         "CHT",
         -- This mod loads after character mods
-        "LOSTPASSAGE", 
-        "ARINTDEMO", 
+        "LOSTPASSAGE",
+        "ARINTDEMO",
         "RISE"
     },
 
     title = "Cross Character Campaign",
-    description = 
+    description =
 [[This mod adds mutators that allows you to play as other characters in Griftlands.
-You can also set the outfit of each character and apply the mutator. Then you can make that character wear the old character's outfit.  
+You can also set the outfit of each character and apply the mutator. Then you can make that character wear the old character's outfit.
 This mod also adds another mutator that allows coin grafts to show up as a generic graft reward and an additional mutator that will randomly select a character.]],
     previewImagePath = "preview.png",
 }
