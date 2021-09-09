@@ -46,6 +46,12 @@ local MUTATORS =
         desc = "Play through this campaign as Kashio",
         override_character = "KASHIO_PLAYER",
     },
+    play_as_victor =
+    {
+        name = "Play As Victor",
+        desc = "Play through and die in this campaign as Victor",
+        override_character = "PC_Victor",
+    },
     rook_coin_reward =
     {
         name = "Rewardable Coins",
@@ -239,6 +245,22 @@ local function OnPreLoad()
     end
     print("CrossCharacterCampaign added localization")
 end
+
+local MOD_OPTIONS =
+{
+    {
+        title = "Joke Chinese Translation",
+        spinner = true,
+        key = "joke_chinese_translation",
+        default_value = false,
+        values =
+        {
+            { name="Disabled", desc="It does nothing if you are not in English, so don't worry about it.", data = false },
+            { name="Enabled", desc="You probably won't understand it anyway. I'm not just saying that because it's in Chinese.", data = true },
+        },
+    }
+}
+
 return {
     version = "1.4.2",
     alias = "CrossCharacterCampaign",
@@ -246,6 +268,8 @@ return {
     OnLoad = OnLoad,
     OnPreLoad = OnPreLoad,
     OnNewGame = OnNewGame,
+
+    mod_options = MOD_OPTIONS,
 
     load_after = {
         -- This mod loads after language mods, to add the po files to that language.
