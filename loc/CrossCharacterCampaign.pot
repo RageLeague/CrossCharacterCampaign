@@ -1,4 +1,29 @@
-﻿#: GRAFT.PLAY_AS_PC_ARINT.DESC
+﻿#: CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.DESC1
+msgctxt "CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.DESC1"
+msgid "It does nothing if you are not in English, so don't worry about it."
+msgstr ""
+
+#: CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.DESC2
+msgctxt "CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.DESC2"
+msgid "You probably won't understand it anyway. I'm not just saying that because it's in Chinese."
+msgstr ""
+
+#: CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.NAME1
+msgctxt "CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.NAME1"
+msgid "Disabled"
+msgstr ""
+
+#: CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.NAME2
+msgctxt "CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.NAME2"
+msgid "Enabled"
+msgstr ""
+
+#: CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.TITLE
+msgctxt "CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.TITLE"
+msgid "Joke Chinese Translation"
+msgstr ""
+
+#: GRAFT.PLAY_AS_PC_ARINT.DESC
 msgctxt "GRAFT.PLAY_AS_PC_ARINT.DESC"
 msgid "Play through this campaign as Arint"
 msgstr ""
@@ -16,6 +41,16 @@ msgstr ""
 #: GRAFT.PLAY_AS_PC_KASHIO.NAME
 msgctxt "GRAFT.PLAY_AS_PC_KASHIO.NAME"
 msgid "Play As Kashio"
+msgstr ""
+
+#: GRAFT.PLAY_AS_PC_SHEL.DESC
+msgctxt "GRAFT.PLAY_AS_PC_SHEL.DESC"
+msgid "Play through this campaign as Shel...?"
+msgstr ""
+
+#: GRAFT.PLAY_AS_PC_SHEL.NAME
+msgctxt "GRAFT.PLAY_AS_PC_SHEL.NAME"
+msgid "Play As Shel"
 msgstr ""
 
 #: GRAFT.PLAY_AS_RANDOM.DESC
@@ -61,6 +96,16 @@ msgstr ""
 #: GRAFT.PLAY_AS_SMITH.NAME
 msgctxt "GRAFT.PLAY_AS_SMITH.NAME"
 msgid "Play As Smith"
+msgstr ""
+
+#: GRAFT.PLAY_AS_VICTOR.DESC
+msgctxt "GRAFT.PLAY_AS_VICTOR.DESC"
+msgid "Play through and die in this campaign as Victor"
+msgstr ""
+
+#: GRAFT.PLAY_AS_VICTOR.NAME
+msgctxt "GRAFT.PLAY_AS_VICTOR.NAME"
+msgid "Play As Victor"
 msgstr ""
 
 #: GRAFT.ROOK_COIN_REWARD.DESC
