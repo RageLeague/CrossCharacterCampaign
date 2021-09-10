@@ -50,7 +50,7 @@ local MUTATORS =
     {
         name = "Play As Victor",
         desc = "Play through and die in this campaign as Victor",
-        override_character = "PC_Victor",
+        override_character = "VICTOR",
     },
     rook_coin_reward =
     {
@@ -186,8 +186,6 @@ local function DetermineOverrideCharacter(game_state)
 end
 local function OnLoad()
 
-    local load_fn = LoadMutators()
-
     local old_fn = PlayerAct.InitializeAct
     -- Modify the PlayerAct.InitializeAct function to consider any mutators applied
     PlayerAct.InitializeAct = function( self, game_state, config_options)
@@ -227,7 +225,7 @@ local function OnLoad()
     -- end
     -- Add localization files
 
-    return load_fn
+    return LoadMutators
 
 end
 local function OnPreLoad()
