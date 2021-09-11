@@ -14,17 +14,17 @@ msgstr ""
 #: GRAFT.PLAY_AS_PC_SHEL.DESC
 msgctxt "GRAFT.PLAY_AS_PC_SHEL.DESC"
 msgid "Play through this campaign as Shel...?"
-msgstr "这一局玩箫...?"
+msgstr "這一局玩簫...?"
 
 #: GRAFT.PLAY_AS_PC_SHEL.NAME
 msgctxt "GRAFT.PLAY_AS_PC_SHEL.NAME"
 msgid "Play As Shel"
-msgstr "使用箫"
+msgstr "使用簫"
 
 #: GRAFT.PLAY_AS_ROOK.DESC
 msgctxt "GRAFT.PLAY_AS_ROOK.DESC"
 msgid "Play through this campaign as Rook"
-msgstr "使用車来玩这个故事"
+msgstr "使用車來玩這個故事"
 
 #: GRAFT.PLAY_AS_ROOK.NAME
 msgctxt "GRAFT.PLAY_AS_ROOK.NAME"
@@ -34,27 +34,27 @@ msgstr "使用車"
 #: GRAFT.PLAY_AS_SAL.DESC
 msgctxt "GRAFT.PLAY_AS_SAL.DESC"
 msgid "Play through this campaign as Sal"
-msgstr "使用骚来玩这个故事"
+msgstr "使用騷來玩這個故事"
 
 #: GRAFT.PLAY_AS_SAL.NAME
 msgctxt "GRAFT.PLAY_AS_SAL.NAME"
 msgid "Play As Sal"
-msgstr "使用骚"
+msgstr "使用騷"
 
 #: GRAFT.PLAY_AS_SMITH.DESC
 msgctxt "GRAFT.PLAY_AS_SMITH.DESC"
 msgid "Play through this campaign as Smith"
-msgstr "使用史密达来玩这个故事"
+msgstr "使用史密達來玩這個故事"
 
 #: GRAFT.PLAY_AS_SMITH.NAME
 msgctxt "GRAFT.PLAY_AS_SMITH.NAME"
 msgid "Play As Smith"
-msgstr "使用史密达"
+msgstr "使用史密達"
 
 #: GRAFT.PLAY_AS_VICTOR.DESC
 msgctxt "GRAFT.PLAY_AS_VICTOR.DESC"
 msgid "Play through and die in this campaign as Victor"
-msgstr "使用向量（神偷奶爸一反派）来玩这个故事"
+msgstr "使用向量（卑鄙的我一反派）來玩這個故事"
 
 #: GRAFT.PLAY_AS_VICTOR.NAME
 msgctxt "GRAFT.PLAY_AS_VICTOR.NAME"
