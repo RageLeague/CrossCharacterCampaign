@@ -19,6 +19,7 @@ Supported Characters:
 * PC Shel (Shel's Adventure - https://steamcommunity.com/sharedfiles/filedetails/?id=2217590179)
 * PC Arint (Arint's Last Day - https://steamcommunity.com/sharedfiles/filedetails/?id=2256085147)
 * PC Kashio (Rise of Kashio - https://steamcommunity.com/sharedfiles/filedetails/?id=2266976421)
+* Victor (Assassin's Obligation - https://steamcommunity.com/sharedfiles/filedetails/?id=2595784397)
 
 [h2]How does it work?[/h2]
 
