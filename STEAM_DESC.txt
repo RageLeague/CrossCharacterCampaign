@@ -2,7 +2,7 @@
 
 A mod that allows you to play as other characters in Griftlands.
 
-Version: 1.4.2
+Version: 1.5.0
 Workshop ID: 2219176890
 Alias(Used for mod dependency): CrossCharacterCampaign
 Github Link: https://github.com/RageLeague/CrossCharacterCampaign
@@ -99,6 +99,11 @@ AddCharacterOverrideMutator("play_as_sal",{
 Note: The function "AddCharacterOverrideMutator(id, graft)" is added to global space during the registration of the mod. You can probably call it during OnLoad. However, I'm not sure whether defining this function during registration will break anything, so it might be safer to call it during one level of PostLoad(the returned function from your OnLoad function).
 
 [h2]CHANGELOG[/h2]
+
+[h3]1.5.0[/h3]
+
+* Added a mutator for Victor (https://steamcommunity.com/sharedfiles/filedetails/?id=2595784397).
+* Disable joke Chinese translation by default because people do not appreciate my jokes, apparently. It can still be enabled in the mod setting screen.
 
 [h3]1.4.2[/h3]
 
