@@ -20,7 +20,7 @@ msgstr ""
 
 #: CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.TITLE
 msgctxt "CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.TITLE"
-msgid "Joke Chinese Translation"
+msgid "Joke Chinese Translation (Requires Restart)"
 msgstr ""
 
 #: GRAFT.PLAY_AS_PC_ARINT.DESC

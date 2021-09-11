@@ -241,13 +241,27 @@ local function OnPreLoad()
             end
         end
     end
+    if Content.GetModSetting(mod, "joke_chinese_translation") then
+        for k, filepath in ipairs( filepath.list_files( "CrossCharacterCampaign:jocloc", "*.po", true )) do
+            local name = filepath:match( "(.+)[.]po$" )
+            local lang_id = name:match("([_%w]+)$")
+            lang_id = lang_id:gsub("_", "-")
+            -- require(name)
+            print(lang_id)
+            for id, data in pairs(Content.GetLocalizations()) do
+                if data.default_languages and table.arraycontains(data.default_languages, lang_id) then
+                    Content.AddPOFileToLocalization(id, filepath)
+                end
+            end
+        end
+    end
     print("CrossCharacterCampaign added localization")
 end
 
 local MOD_OPTIONS =
 {
     {
-        title = "Joke Chinese Translation",
+        title = "Joke Chinese Translation (Requires Restart)",
         spinner = true,
         key = "joke_chinese_translation",
         default_value = false,

@@ -36,8 +36,8 @@ msgstr "启用"
 
 #: CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.TITLE
 msgctxt "CrossCharacterCampaign.JOKE_CHINESE_TRANSLATION.TITLE"
-msgid "Joke Chinese Translation"
-msgstr "中文翻译梗"
+msgid "Joke Chinese Translation (Requires Restart)"
+msgstr "中文翻译梗（需要重启）"
 
 #: GRAFT.PLAY_AS_PC_ARINT.DESC
 msgctxt "GRAFT.PLAY_AS_PC_ARINT.DESC"
