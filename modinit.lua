@@ -274,7 +274,7 @@ local MOD_OPTIONS =
 }
 
 return {
-    version = "1.5.0",
+    version = "1.5.1",
     alias = "CrossCharacterCampaign",
 
     OnLoad = OnLoad,

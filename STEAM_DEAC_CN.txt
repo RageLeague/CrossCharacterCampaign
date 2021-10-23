@@ -2,7 +2,7 @@
 
 允许您在Griftlands中使用其他角色的模组。
 
-版本：1.5.0
+版本：1.5.1
 工坊ID：2219176890
 别名（只有其他模组需要访问这个模组时才用）：CrossCharacterCampaign
 Github 链接：https://github.com/RageLeague/CrossCharacterCampaign
