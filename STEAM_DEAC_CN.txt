@@ -2,7 +2,7 @@
 
 允许您在Griftlands中使用其他角色的模组。
 
-版本：1.5.1
+版本：2.0.0
 工坊ID：2219176890
 别名（只有其他模组需要访问这个模组时才用）：CrossCharacterCampaign
 Github 链接：https://github.com/RageLeague/CrossCharacterCampaign
@@ -20,6 +20,11 @@ Github 链接：https://github.com/RageLeague/CrossCharacterCampaign
 * 阿林特（Arint）（Arint's Last Day - https://steamcommunity.com/sharedfiles/filedetails/?id=2256085147）
 * 凯石傲（Kashio）（Rise of Kashio - https://steamcommunity.com/sharedfiles/filedetails/?id=2266976421）
 * 维克托 (Victor) (Assassin's Obligation - https://steamcommunity.com/sharedfiles/filedetails/?id=2595784397)
+
+间接支持的角色（此模组不为这些角色增加突变器，但是这些角色的模组添加了他们的突变器）：
+
+* 马吉克 (魔术师 马吉克(Only Chinese) - https://steamcommunity.com/sharedfiles/filedetails/?id=2564893425)
+* Plundak (Playable Plundak Prototype - https://steamcommunity.com/sharedfiles/filedetails/?id=2771218278)
 
 （这个介绍大部分是机翻，但是我手改了一些翻译。）
 

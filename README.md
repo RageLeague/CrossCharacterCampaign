@@ -2,7 +2,7 @@
 
 A mod that allows you to play as other characters in Griftlands.
 
-Version: 1.5.1
+Version: 2.0.0
 Workshop ID: 2219176890
 Alias(Used for mod dependency): CrossCharacterCampaign
 Github Link: https://github.com/RageLeague/CrossCharacterCampaign
@@ -20,6 +20,11 @@ Supported Characters:
 * PC Arint (Arint's Last Day - https://steamcommunity.com/sharedfiles/filedetails/?id=2256085147)
 * PC Kashio (Rise of Kashio - https://steamcommunity.com/sharedfiles/filedetails/?id=2266976421)
 * Victor (Assassin's Obligation - https://steamcommunity.com/sharedfiles/filedetails/?id=2595784397)
+
+Indirectly Support Characters (This mod does not add mutators for them, but the character mod does):
+
+* 马吉克 (魔术师 马吉克(Only Chinese) - https://steamcommunity.com/sharedfiles/filedetails/?id=2564893425)
+* Plundak (Playable Plundak Prototype - https://steamcommunity.com/sharedfiles/filedetails/?id=2771218278)
 
 ## How does it work?
 
@@ -73,33 +78,29 @@ A .pot file should also be found in the folders of this mod, if you can find it.
 
 ## Notice for other modders
 
-Since update 1.2.0, you can add a mutator for a character you added. A helper function `AddCharacterOverrideMutator(id, graft)` is added to the global space that allows you to easily add a character override mutator. If you're not interested, you should skip this section since it's quite boring.
+You can add a custom character override mutator using the `CCCUtil.AddCharacterOverrideMutator` function.
 
-The function `AddCharacterOverrideMutator(id, graft)` accepts two parameters. `id` is the ID used to identify your mutator graft, and `graft` is a table that contains your mutator information. It has the same behaviour as `Content.AddMutatorGraft(id, graft)` if used on a normal mutator, but does different things if it is a character mutator.
-
-A "character mutator" modifies the current player character if selected. To set the character selected, set the field `override_character` to your player background ID.
-
-When the function is called on a character mutator, it does a few things:
-
-1. It tries to figure out the mod ID of the character background the mutator has. If it finds one, it assigns the mod ID to the field `character_from_mod` for determining mod requirements at the start of a new game.
-2. It adds the definition to Content.
-3. It tracks it to a list of character mutators, and change the field `exclusion_ids` of all character mutators to include all other character mutators, since it doesn't make sense for the player to be able to select two character mutators at once. Note any original `exclusion_ids` will be overwritten, so don't define a `exclusion_ids` field.
-
-For example, to add Sal's character mutator, this is the code that should be run.
+For example, to add Sal's character mutator, this is the code that should be run. Note that this code also automatically checks if CCC is loaded, so that it is skipped if CCC is not installed.
 
 ```lua
-AddCharacterOverrideMutator("play_as_sal",{
-    name = "Play As Sal",
-    desc = "Play through this campaign as Sal",
-    img = engine.asset.Texture("[path to file]", true),
-    img_path = "[path to file]",
-    override_character = "SAL",
-})
+if rawget(_G, "CCCUtil") then
+    CCCUtil.AddCharacterOverrideMutator("play_as_sal", {
+        name = "Play As Sal",
+        desc = "Play through this campaign as Sal",
+        img = engine.asset.Texture("[path to file]", true),
+        img_path = "[path to file]",
+        override_character = "SAL",
+    })
+end
 ```
 
-Note: The function `AddCharacterOverrideMutator(id, graft)` is added to global space during the registration of the mod. You can probably call it during OnLoad. However, I'm not sure whether defining this function during registration will break anything, so it might be safer to call it during one level of PostLoad(the returned function from your OnLoad function).
+Note: The function `CCCUtil.AddCharacterOverrideMutator(id, graft)` is added during the first level of OnLoad. It is recommended that you call it during the second level of OnLoad (the returned function from your OnLoad function), as it guarantees that this function is already loaded.
 
 ## CHANGELOG
+
+### 2.0.0
+
+* Refactored code to make the mod more visible to other mods.
 
 ### 1.5.1
 
